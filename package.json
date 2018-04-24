@@ -1,7 +1,7 @@
 {
-  "name": "my-react",
+  "name": "Game of Life",
   "version": "1.0.0",
-  "description": "A Simple Reactjs Scaffolding",
+  "description": "Conway's Game of Life using React JS",
   "main": "index.js",
   "scripts": {
     "bundle": "webpack",
@@ -17,17 +17,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GaneshmKumar/my-react.git"
+    "url": "git+https://github.com/GaneshmKumar/GameOfLife.git"
   },
   "keywords": [
-    "React Scaffolding",
-    "React app"
+    "Conway's Game of Life",
+    "Game of Life"
   ],
-  "homepage": "https://ganeshmkumar.github.io/my-react",
+  "homepage": "https://ganeshmkumar.github.io/GameOfLife",
   "author": "GaNeShKuMaRm <ganeshkumar.m1996@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.18.0",
     "classnames": "^2.2.5",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",

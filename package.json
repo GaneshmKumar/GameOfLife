@@ -1,5 +1,5 @@
 {
-  "name": "Game of Life",
+  "name": "game-of-life",
   "version": "1.0.0",
   "description": "Conway's Game of Life using React JS",
   "main": "index.js",

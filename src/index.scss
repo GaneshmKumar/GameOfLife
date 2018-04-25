@@ -1,0 +1,19 @@
+@import url(https://fonts.googleapis.com/css?family=Gugi|Roboto|Jua|Lobster);
+
+:root {
+  --white: #FFFFFF;
+  --light-black: #414141;
+}
+
+body {
+  overflow: hidden;
+  margin: 0 0;
+
+  input,  button {
+    outline: none;
+  }
+
+  a,  a:hover {
+    text-decoration: none;
+  }
+}

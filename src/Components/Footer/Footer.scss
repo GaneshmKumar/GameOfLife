@@ -1,0 +1,14 @@
+.footer {
+  background: var(--white);
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+
+  .copyright {
+    text-align: center;
+    position: relative;
+    font-size: 12px;
+    top: 5px;
+    color: var(--light-black);
+    line-height: 20px;
+  }
+}

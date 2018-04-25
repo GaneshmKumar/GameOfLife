@@ -1,0 +1,28 @@
+.header {
+  background: var(--white);
+
+  .nav {
+    background: var(--white);
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    box-shadow: 0 0 20px var(--light-black);
+
+    .app-title {
+      margin: 0 0;
+      font-family: 'Lobster', cursive;
+      font-weight: normal;
+      font-size: 28px;
+      margin-left: 15px;
+
+      a {
+        color: var(--light-black);
+        float: left;
+        height: 50px;
+        padding: 10px 10px;
+        line-height: 50px;
+      }
+    }
+  }
+}

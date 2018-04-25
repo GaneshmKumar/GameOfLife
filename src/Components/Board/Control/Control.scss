@@ -1,0 +1,57 @@
+.controls {
+    display: grid;
+    grid-template-rows: 50% 50%;
+
+    .size-and-speed-control, .play-pause-clear-control {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 10px;
+    }
+
+    .size-and-speed-control {
+      grid-template-areas: ". RowControl ColumnControl SpeedControl .";
+
+      .row-group {
+        grid-area: RowControl;
+      }
+
+      .column-group {
+        grid-area: ColumnControl;
+      }
+
+      .speed-group {
+        grid-area: SpeedControl;
+      }
+
+      .input-group {
+        display: grid;
+        grid-template-rows: 30% 70%;
+
+        input {
+          height: 25px;
+          padding: 0px 5px;
+          margin-top: 5px;
+        }
+      }
+    }
+
+    .play-pause-clear-control {
+      grid-template-areas: ". PlayButton PauseButton ClearButton .";
+
+      .btn {
+        height: 30px;
+      }
+
+      .play-btn {
+        grid-area: PlayButton;
+      }
+
+      .pause-btn {
+        grid-area: PauseButton;
+      }
+
+      .clear-btn {
+        grid-area: ClearButton;
+      }
+    }
+}

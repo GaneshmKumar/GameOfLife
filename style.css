@@ -1,0 +1,85 @@
+@import url(https://fonts.googleapis.com/css?family=Gugi|Roboto|Jua|Lobster);:root {
+  --white: #FFFFFF;
+  --light-black: #414141; }
+
+body {
+  overflow: hidden;
+  margin: 0 0; }
+  body input, body button {
+    outline: none; }
+  body a, body a:hover {
+    text-decoration: none; }
+.app {
+  display: grid;
+  grid-template-rows: 60px auto 30px;
+  height: 100vh; }
+.header {
+  background: var(--white); }
+  .header .nav {
+    background: var(--white);
+    position: fixed;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+    box-shadow: 0 0 20px var(--light-black); }
+    .header .nav .app-title {
+      margin: 0 0;
+      font-family: 'Lobster', cursive;
+      font-weight: normal;
+      font-size: 28px;
+      margin-left: 15px; }
+      .header .nav .app-title a {
+        color: var(--light-black);
+        float: left;
+        height: 50px;
+        padding: 10px 10px;
+        line-height: 50px; }
+.footer {
+  background: var(--white);
+  position: relative;
+  font-family: 'Roboto', sans-serif; }
+  .footer .copyright {
+    text-align: center;
+    position: relative;
+    font-size: 12px;
+    top: 5px;
+    color: var(--light-black);
+    line-height: 20px; }
+.board {
+  margin-top: 30px;
+  display: grid;
+  grid-template-rows: 25% 75%; }
+.controls {
+  display: grid;
+  grid-template-rows: 50% 50%; }
+  .controls .size-and-speed-control, .controls .play-pause-clear-control {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px; }
+  .controls .size-and-speed-control {
+    grid-template-areas: ". RowControl ColumnControl SpeedControl ."; }
+    .controls .size-and-speed-control .row-group {
+      grid-area: RowControl; }
+    .controls .size-and-speed-control .column-group {
+      grid-area: ColumnControl; }
+    .controls .size-and-speed-control .speed-group {
+      grid-area: SpeedControl; }
+    .controls .size-and-speed-control .input-group {
+      display: grid;
+      grid-template-rows: 30% 70%; }
+      .controls .size-and-speed-control .input-group input {
+        height: 25px;
+        padding: 0px 5px;
+        margin-top: 5px; }
+  .controls .play-pause-clear-control {
+    grid-template-areas: ". PlayButton PauseButton ClearButton ."; }
+    .controls .play-pause-clear-control .btn {
+      height: 30px; }
+    .controls .play-pause-clear-control .play-btn {
+      grid-area: PlayButton; }
+    .controls .play-pause-clear-control .pause-btn {
+      grid-area: PauseButton; }
+    .controls .play-pause-clear-control .clear-btn {
+      grid-area: ClearButton; }
+
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZS5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/

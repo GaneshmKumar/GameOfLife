@@ -1,6 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Gugi|Roboto|Jua|Lobster);:root {
   --white: #FFFFFF;
-  --light-black: #414141; }
+  --light-black: #414141;
+  --success: #449D44;
+  --danger: #FF4436;
+  --warning: #EC971F; }
 
 body {
   overflow: hidden;
@@ -69,17 +72,44 @@ body {
       grid-template-rows: 30% 70%; }
       .controls .size-and-speed-control .input-group input {
         height: 25px;
-        padding: 0px 5px;
-        margin-top: 5px; }
+        padding: 0px 10px;
+        margin-top: 5px;
+        border: solid 1px var(--light-black);
+        border-radius: 15px; }
   .controls .play-pause-clear-control {
     grid-template-areas: ". PlayButton PauseButton ClearButton ."; }
     .controls .play-pause-clear-control .btn {
-      height: 30px; }
+      height: 30px;
+      border: solid 1px;
+      color: white;
+      border-radius: 15px;
+      transition: all 0.2s linear; }
+    .controls .play-pause-clear-control .btn:hover {
+      cursor: pointer;
+      box-shadow: 0 0 5px var(--light-black); }
+    .controls .play-pause-clear-control .btn-success {
+      background: var(--success);
+      border-color: var(--success); }
+    .controls .play-pause-clear-control .btn-warning {
+      background: var(--warning);
+      border-color: var(--warning); }
+    .controls .play-pause-clear-control .btn-danger {
+      background: var(--danger);
+      border-color: var(--danger); }
     .controls .play-pause-clear-control .play-btn {
       grid-area: PlayButton; }
     .controls .play-pause-clear-control .pause-btn {
       grid-area: PauseButton; }
     .controls .play-pause-clear-control .clear-btn {
       grid-area: ClearButton; }
+
+@media screen and (max-width: 783px) {
+  .controls .size-and-speed-control, .controls .play-pause-clear-control {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 10px 10px; }
+  .controls .size-and-speed-control {
+    grid-template-areas: "RowControl ColumnControl SpeedControl"; }
+  .controls .play-pause-clear-control {
+    grid-template-areas: "PlayButton PauseButton ClearButton"; } }
 
 /*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdHlsZS5jc3MiLCJzb3VyY2VSb290IjoiIn0=*/

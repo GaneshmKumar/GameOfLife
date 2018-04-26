@@ -29,8 +29,10 @@
 
         input {
           height: 25px;
-          padding: 0px 5px;
+          padding: 0px 10px;
           margin-top: 5px;
+          border: solid 1px var(--light-black);
+          border-radius: 15px;
         }
       }
     }
@@ -40,6 +42,30 @@
 
       .btn {
         height: 30px;
+        border: solid 1px;
+        color: white;
+        border-radius: 15px;
+        transition: all 0.2s linear;
+      }
+
+      .btn:hover {
+        cursor: pointer;
+        box-shadow: 0 0 5px var(--light-black);
+      }
+
+      .btn-success {
+        background: var(--success);
+        border-color: var(--success)
+      }
+
+      .btn-warning {
+        background: var(--warning);
+        border-color: var(--warning)
+      }
+
+      .btn-danger {
+        background: var(--danger);
+        border-color: var(--danger)
       }
 
       .play-btn {
@@ -54,4 +80,21 @@
         grid-area: ClearButton;
       }
     }
+}
+
+@media screen and (max-width: 783px) {
+  .controls {
+    .size-and-speed-control, .play-pause-clear-control {
+      grid-template-columns: repeat(3, 1fr);
+      padding: 10px 10px;
+    }
+
+    .size-and-speed-control {
+      grid-template-areas: "RowControl ColumnControl SpeedControl";
+    }
+
+    .play-pause-clear-control {
+      grid-template-areas: "PlayButton PauseButton ClearButton";
+    }
+  }
 }

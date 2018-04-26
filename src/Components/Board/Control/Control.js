@@ -4,15 +4,18 @@ import './Control.scss';
 class Control extends Component {
   render () {
     const {
-      minRow,
-      maxRow,
-      defaultRow,
-      minColumn,
-      maxColumn,
-      defaultColumn,
+      minRows,
+      maxRows,
+      defaultRows,
+      minColumns,
+      maxColumns,
+      defaultColumns,
       minSpeed,
       maxSpeed,
-      defaultSpeed
+      defaultSpeed,
+      setRow,
+      setColumn,
+      setSpeed
     } = this.props;
 
     return (
@@ -20,21 +23,42 @@ class Control extends Component {
         <div className="size-and-speed-control">
           <div className="row-group input-group">
             <label htmlFor="row">Rows</label>
-            <input id="rows" type="number" min={minRow} max={maxRow} defaultValue={defaultRow} />
+            <input
+              id="rows"
+              type="number"
+              min={minRows}
+              max={maxRows}
+              defaultValue={defaultRows}
+              onChange={setRow}
+            />
           </div>
           <div className="column-group input-group">
-            <label htmlFor="column">Columns</label>
-            <input id="column" type="number" min={minColumn} max={maxColumn} defaultValue={defaultColumn} />
+            <label htmlFor="column">Columnss</label>
+            <input
+              id="column"
+              type="number"
+              min={minColumns}
+              max={maxColumns}
+              defaultValue={defaultColumns}
+              onChange={setColumn}
+            />
           </div>
           <div className="speed-group input-group">
-            <label htmlFor="speed">Speed (in seconds)</label>
-            <input id="speed" type="number" min={minSpeed} max={maxSpeed} defaultValue={defaultSpeed} />
+            <label htmlFor="speed">Speed</label>
+            <input
+              id="speed"
+              type="number"
+              min={minSpeed}
+              max={maxSpeed}
+              defaultValue={defaultSpeed}
+              onChange={setSpeed}
+            />
           </div>
         </div>
         <div className="play-pause-clear-control">
-          <button className="play-btn btn">Play</button>
-          <button className="pause-btn btn">Pause</button>
-          <button className="clear-btn btn">Clear</button>
+          <button className="play-btn btn btn-success">Play</button>
+          <button className="pause-btn btn btn-warning">Pause</button>
+          <button className="clear-btn btn btn-danger">Clear</button>
         </div>
       </div>
     );

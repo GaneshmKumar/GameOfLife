@@ -7,43 +7,100 @@ class Board extends Component {
     super(props);
 
     this.state = {
-      minRow: 10,
-      maxRow: 50,
-      defaultRow: 10,
-      minColumn: 10,
-      maxColumn: 50,
-      defaultColumn: 10,
+      minRows: 10,
+      maxRows: 50,
+      defaultRows: 10,
+      rows: 10,
+      minColumns: 10,
+      maxColumns: 50,
+      defaultColumns: 10,
+      columns: 10,
       minSpeed: 1,
       maxSpeed: 10,
-      defaultSpeed: 1
+      defaultSpeed: 1,
+      speed: 1
     };
+  }
+
+  _setRow (e) {
+    let { value } = e.target;
+    const { maxRows, minRows } = this.state;
+
+    if (value < minRows) {
+      value = minRows;
+    }
+    else if (value > maxRows) {
+      value = maxRows;
+    }
+
+    this.setState({
+      rows: value
+    });
+  }
+
+  _setColumn (e) {
+    let { value } = e.target;
+    const { minColumns, maxColumns } = this.state;
+
+    if (value < minColumns) {
+      value = minColumns;
+    }
+    else if (value > maxColumns) {
+      value = maxColumns;
+    }
+
+    this.setState({
+      columns: value
+    });
+  }
+
+  _setSpeed (e) {
+    let { value } = e.target;
+    const { minSpeed, maxSpeed } = this.state;
+
+    if (value < minSpeed) {
+      value = minSpeed;
+    }
+    else if (value > maxSpeed) {
+      value = maxSpeed;
+    }
+
+    this.setState({
+      speed: value
+    });
   }
 
   render () {
     const {
-      minRow,
-      maxRow,
-      defaultRow,
-      minColumn,
-      maxColumn,
-      defaultColumn,
+      minRows,
+      maxRows,
+      defaultRows,
+      rows,
+      minColumns,
+      maxColumns,
+      defaultColumns,
+      columns,
       minSpeed,
       maxSpeed,
-      defaultSpeed
+      defaultSpeed,
+      speed
     } = this.state;
 
     return (
       <div className="board">
         <Control
-          minRow={minRow}
-          maxRow={maxRow}
-          defaultRow={defaultRow}
-          minColumn={minColumn}
-          maxColumn={maxColumn}
-          defaultColumn={defaultColumn}
+          minRows={minRows}
+          maxRows={maxRows}
+          defaultRows={defaultRows}
+          minColumns={minColumns}
+          maxColumns={maxColumns}
+          defaultColumns={defaultColumns}
           minSpeed={minSpeed}
           maxSpeed={maxSpeed}
           defaultSpeed={defaultSpeed}
+          setRow={e => this._setRow(e)}
+          setColumn={e => this._setColumn(e)}
+          setSpeed={e => this._setSpeed(e)}
         />
       </div>
     );

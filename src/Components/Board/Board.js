@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Board.scss';
 import Control from './Control/Control';
+import Grid from './Grid/Grid';
 
 class Board extends Component {
   constructor (props) {
@@ -9,17 +10,25 @@ class Board extends Component {
     this.state = {
       minRows: 10,
       maxRows: 50,
-      defaultRows: 10,
+      defaultRows: 20,
       rows: 10,
       minColumns: 10,
       maxColumns: 50,
-      defaultColumns: 10,
+      defaultColumns: 20,
       columns: 10,
       minSpeed: 1,
       maxSpeed: 10,
       defaultSpeed: 1,
-      speed: 1
+      speed: 1,
+      grid: [[]],
+      cellWidth: 10,
+      cellHeight: 10,
+      cellGap: 2
     };
+  }
+
+  componentDidMount () {
+    this._generateEmptyGrid();
   }
 
   _setRow (e) {
@@ -28,13 +37,14 @@ class Board extends Component {
 
     if (value < minRows) {
       value = minRows;
-    }
-    else if (value > maxRows) {
+    } else if (value > maxRows) {
       value = maxRows;
     }
 
     this.setState({
-      rows: value
+      rows: parseInt(value, 10)
+    }, () => {
+      this._generateEmptyGrid();
     });
   }
 
@@ -44,13 +54,14 @@ class Board extends Component {
 
     if (value < minColumns) {
       value = minColumns;
-    }
-    else if (value > maxColumns) {
+    } else if (value > maxColumns) {
       value = maxColumns;
     }
 
     this.setState({
-      columns: value
+      columns: parseInt(value, 10)
+    }, () => {
+      this._generateEmptyGrid();
     });
   }
 
@@ -60,30 +71,42 @@ class Board extends Component {
 
     if (value < minSpeed) {
       value = minSpeed;
-    }
-    else if (value > maxSpeed) {
+    } else if (value > maxSpeed) {
       value = maxSpeed;
     }
 
     this.setState({
-      speed: value
+      speed: parseInt(value, 10)
+    }, () => {
+      this._generateEmptyGrid();
     });
   }
+
+  _generateEmptyGrid () {
+    const { rows, columns } = this.state;
+    const grid = Array(rows).fill(Array(columns).fill(0));
+
+    this.setState({
+      grid
+    });
+  }
+
 
   render () {
     const {
       minRows,
       maxRows,
       defaultRows,
-      rows,
       minColumns,
       maxColumns,
       defaultColumns,
-      columns,
       minSpeed,
       maxSpeed,
       defaultSpeed,
-      speed
+      grid,
+      cellWidth,
+      cellHeight,
+      cellGap
     } = this.state;
 
     return (
@@ -101,6 +124,12 @@ class Board extends Component {
           setRow={e => this._setRow(e)}
           setColumn={e => this._setColumn(e)}
           setSpeed={e => this._setSpeed(e)}
+        />
+        <Grid
+          cellWidth={cellWidth}
+          cellHeight={cellHeight}
+          cellGap={cellGap}
+          grid={grid}
         />
       </div>
     );

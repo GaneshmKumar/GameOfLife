@@ -1,0 +1,15 @@
+.grid {
+  margin: 0px auto;
+  display: block;
+
+  .cell {
+    background: #414141;
+    display: inline-block;
+    transition: all 0.2s linear;
+  }
+
+  .cell:hover {
+    cursor: pointer;
+    opacity: 0.6;
+  }
+}

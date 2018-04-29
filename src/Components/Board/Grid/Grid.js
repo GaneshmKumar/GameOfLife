@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import './Grid.scss';
 
 class Grid extends Component {
-  _getCellStyle (cellWidth, cellHeight, cellGap) {
-    return {
+  _getCellStyle (cellWidth, cellHeight, cellGap, isCellAlive) {
+    const styles = {
       width: `${cellWidth}px`,
       height: `${cellHeight}px`,
       margin: `${cellGap}px ${cellGap}px`
     };
+
+    if (isCellAlive) {
+      styles.background = '#BADA55';
+    }
+
+    return styles;
   }
 
   render () {
@@ -24,7 +30,7 @@ class Grid extends Component {
               for (let col = 0; col < cols; col += 1) {
                 cells.push(<div
                   className="cell"
-                  style={this._getCellStyle(cellWidth, cellHeight, cellGap)}
+                  style={this._getCellStyle(cellWidth, cellHeight, cellGap, grid[row][col])}
                 />);
               }
               cells.push(<br />);

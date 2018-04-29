@@ -11,11 +11,11 @@ class Board extends Component {
       minRows: 10,
       maxRows: 50,
       defaultRows: 20,
-      rows: 10,
+      rows: 20,
       minColumns: 10,
       maxColumns: 50,
       defaultColumns: 20,
-      columns: 10,
+      columns: 20,
       minSpeed: 1,
       maxSpeed: 10,
       defaultSpeed: 1,
@@ -28,7 +28,7 @@ class Board extends Component {
   }
 
   componentDidMount () {
-    this._generateEmptyGrid();
+    this._setInitialGrid();
   }
 
   _setRow (e) {
@@ -44,7 +44,7 @@ class Board extends Component {
     this.setState({
       rows: parseInt(value, 10)
     }, () => {
-      this._generateEmptyGrid();
+      this._setInitialGrid();
     });
   }
 
@@ -61,7 +61,7 @@ class Board extends Component {
     this.setState({
       columns: parseInt(value, 10)
     }, () => {
-      this._generateEmptyGrid();
+      this._setInitialGrid();
     });
   }
 
@@ -78,13 +78,43 @@ class Board extends Component {
     this.setState({
       speed: parseInt(value, 10)
     }, () => {
-      this._generateEmptyGrid();
+      this._setInitialGrid();
     });
   }
 
-  _generateEmptyGrid () {
+  _getRandomNumberBetweenRanges (start, end) {
+    return Math.floor(Math.random() * end) + start;
+  }
+
+  _setRandomLiveCells (grid) {
+    const rows = grid.length;
+    const columns = grid[0].length;
+
+    const maxLiveCells = (rows * columns) / 10;
+
+    let randI = -1;
+    let randJ = -1;
+    for (let i = 0; i < maxLiveCells; i += 1) {
+      randI = this._getRandomNumberBetweenRanges(0, rows);
+      randJ = this._getRandomNumberBetweenRanges(0, columns);
+
+      if (grid[randI][randJ] === 1) {
+        i -= 1;
+      }
+      grid[randI][randJ] = 1;
+    }
+
+    return grid;
+  }
+
+  _getEmptyGrid () {
     const { rows, columns } = this.state;
-    const grid = Array(rows).fill(Array(columns).fill(0));
+    return Array(rows).fill(Array(columns).fill(0));
+  }
+
+  _setInitialGrid () {
+    let grid = this._getEmptyGrid();
+    grid = this._setRandomLiveCells(grid);
 
     this.setState({
       grid

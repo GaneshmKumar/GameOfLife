@@ -115,7 +115,7 @@ body {
   margin: 0px auto;
   display: block; }
   .grid .cell {
-    background: #414141;
+    background: #919191;
     display: inline-block;
     transition: all 0.2s linear; }
   .grid .cell:hover {

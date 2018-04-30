@@ -15,7 +15,8 @@ class Control extends Component {
       defaultSpeed,
       setRow,
       setColumn,
-      setSpeed
+      setSpeed,
+      clearGrid
     } = this.props;
 
     return (
@@ -58,7 +59,7 @@ class Control extends Component {
         <div className="play-pause-clear-control">
           <button className="play-btn btn btn-success">Play</button>
           <button className="pause-btn btn btn-warning">Pause</button>
-          <button className="clear-btn btn btn-danger">Clear</button>
+          <button className="clear-btn btn btn-danger" onClick={clearGrid}>Clear</button>
         </div>
       </div>
     );

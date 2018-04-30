@@ -25,6 +25,8 @@ class Board extends Component {
       cellHeight: 10,
       cellGap: 2
     };
+
+    this._toggleCellState = this._toggleCellState.bind(this);
   }
 
   componentDidMount () {
@@ -90,10 +92,10 @@ class Board extends Component {
     const rows = grid.length;
     const columns = grid[0].length;
 
-    const maxLiveCells = (rows * columns) / 10;
-
     let randI = -1;
     let randJ = -1;
+    const maxLiveCells = (rows * columns) / 10;
+
     for (let i = 0; i < maxLiveCells; i += 1) {
       randI = this._getRandomNumberBetweenRanges(0, rows);
       randJ = this._getRandomNumberBetweenRanges(0, columns);
@@ -109,18 +111,41 @@ class Board extends Component {
 
   _getEmptyGrid () {
     const { rows, columns } = this.state;
-    return Array(rows).fill(Array(columns).fill(0));
+    const grid = [];
+    for (let r = 0; r < rows; r += 1) {
+      const temp = [];
+      for (let c = 0; c < columns; c += 1) {
+        temp.push(0);
+      }
+      grid.push(temp);
+    }
+    return grid;
   }
 
   _setInitialGrid () {
     let grid = this._getEmptyGrid();
-    grid = this._setRandomLiveCells(grid);
+    grid = this._setRandomLiveCells(grid.slice());
 
     this.setState({
       grid
     });
   }
 
+  _clearGrid () {
+    const grid = this._getEmptyGrid();
+
+    this.setState({
+      grid
+    });
+  }
+
+  _toggleCellState (row, column) {
+    this.setState((prevState) => {
+      const grid = Array.from(prevState.grid);
+      grid[row][column] = !grid[row][column];
+      return grid;
+    });
+  }
 
   render () {
     const {
@@ -154,12 +179,14 @@ class Board extends Component {
           setRow={e => this._setRow(e)}
           setColumn={e => this._setColumn(e)}
           setSpeed={e => this._setSpeed(e)}
+          clearGrid={() => this._clearGrid()}
         />
         <Grid
           cellWidth={cellWidth}
           cellHeight={cellHeight}
           cellGap={cellGap}
           grid={grid}
+          toggleCellState={this._toggleCellState}
         />
       </div>
     );
